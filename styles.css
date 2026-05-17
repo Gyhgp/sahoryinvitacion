@@ -418,7 +418,12 @@ main > section.hero.section-shell {
   font-size: clamp(3.2rem, 7.8vw, 6.2rem);
   line-height: 0.92;
   letter-spacing: -0.02em;
-  text-shadow: 0 26px 60px rgba(15, 15, 16, 0.09);
+  color: rgba(15, 15, 16, 0.98);
+  -webkit-text-stroke: 1px rgba(242, 201, 76, 0.6);
+  text-shadow:
+    0 26px 60px rgba(15, 15, 16, 0.09),
+    0 0 0.8px rgba(242, 201, 76, 0.55),
+    0 14px 44px rgba(242, 201, 76, 0.12);
 }
 
 .hero-title span {

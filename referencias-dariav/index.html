@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invitación</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="scripts/script.js"></script>
+    
+</head>
+
+<body>
+    <div class="sections-container">
+        <section id="carrusel">
+            <div class="carrusel position"></div>
+            <div class="audio-container">
+                <audio controls id="audio"> <!-- Agregar autoplay-->
+                    <source src="resources/i-aint-worried.mp3" type="audio/mpeg" />
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="carrusel-container">
+                <div class="carrusel-header">
+                    <h1>¡Mis XV años!</h1>
+                </div>
+                <div class="carrusel-title">
+                    <h1>Daria Valentina</h1>
+                </div>
+                
+            </div>
+        </section>
+        <section id="info">
+            <div class="info-container">
+                <div class="vineta-sup">
+                    <img src="img/vineta-1.svg" alt="">
+                </div>
+                <div class="info-header">
+                    <div>
+                        <p id="info-header-1">Hay momentos inolvidables que se atesoran en el corazón para siempre. Por esta razón,
+                                                quiero que compartas conmigo éste día tan especial:</p>
+                    </div>
+                    <div>
+                        <p id="info-header-2">Mis XV años</p>
+                    </div>
+                </div>
+                <div class="vineta-div">
+                    <img src="img/vineta-2.svg" alt="">
+                </div>
+                <div class="info-padres">
+                    <div>
+                        <p id="info-padres-1">Acompáñanos a celebrar con la bendición de Dios y mis padres:</p>
+                    </div>
+                    <div class="info-familiares">
+                        <div>
+                            <p id="info-familiares-1">Silvia Alvarado Vázquez</p>
+                        </div>
+                        <div>
+                            <p id="info-familiares-2">&</p>
+                        </div>
+                        <div>
+                            <p id="info-familiares-3">Romeo Ramirez Betanzo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="vineta-div">
+                    <img src="img/vineta-2.svg" alt="">
+                </div>
+                <div class="info-padrinos">
+                    <div>
+                        <p id="info-padrinos-1">Mis abuelos:</p>
+                    </div>
+                    <div class="info-familiares">
+                        <div>
+                            <p id="info-familiares-4">Marta E. Vázquez Duarte</p>
+                        </div>
+                        <div>
+                            <p id="info-familiares-5">&</p>
+                        </div>
+                        <div>
+                            <p id="info-familiares-6">José A. Alvarado Pérez</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="vineta-div">
+                    <img src="img/vineta-2.svg" alt="">
+                </div>
+                <div class="info-padrinos">
+                    <div>
+                        <p id="info-padrinos-1">Y de mis padrinos:</p>
+                    </div>
+                    <div class="info-familiares">
+                        <div>
+                            <p id="info-familiares-4">Laura Alvarado Vázquez</p>
+                        </div>
+                        <div>
+                            <p id="info-familiares-5">&</p>
+                        </div>
+                        <div>
+                            <p id="info-familiares-6">Manuel Sánchez Sánchez</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="vineta-div">
+                    <img src="img/vineta-2.svg" alt="">
+                </div>
+                <div class="info-header">
+                    <div>
+                        <p id="info-header-1">Tu presencia ayudará a transformar uno de los días más importantes
+                                                de mi vida...</p>
+                    </div>
+                </div>
+                <div class="vineta-inf">
+                    <img src="img/vineta-1.svg" alt="">
+                </div>
+            </div>
+        </section>
+        <section id="crono">
+            <div class="crono"></div>
+            <div class="crono-title">
+                <h1>Faltan:</h1>
+            </div>
+            <div class="crono-countdown">
+                <div class="box">
+                    <p class="box-num" id="dia"></p>
+                    <p class="box-let">Días</p>
+                </div>
+                <div class="box">
+                    <p class="box-num" id="hor"></p>
+                    <p class="box-let">Hrs.</p>
+                </div>
+                <div class="box">
+                    <p class="box-num" id="min"></p>
+                    <p class="box-let">Min.</p>
+                </div>
+                <div class="box">
+                    <p class="box-num" id="seg"></p>
+                    <p class="box-let">Seg.</p>
+                </div>
+            </div>
+        </section>
+        <section id="detalles">
+            <div class="detalles-container">
+                <div class="vineta-sup">
+                    <img src="img/vineta-1.svg" alt="">
+                </div>
+                <div class="detalles-header">
+                    <div>
+                        <p id="detalles-header-1">¡LO QUE TIENES QUE SABER!</p>
+                    </div>
+                </div>
+                <div class="vineta-inf">
+                    <img src="img/vineta-1.svg" alt="">
+                </div>
+                <div class="detalles-detalles">
+                    <div class="detalles-iconos">
+                        <div class="detalles-icono-1">
+                            <img src="img/ico-1.svg" alt="">
+                            <div class="detalles-title">
+                                <p>¿Cuándo?</p>
+                            </div>
+                            <div class="detalles-body">
+                                <p>Sábado 20 de Julio 2024, a las 17:30</p>
+                            </div>
+                        </div>
+                        <div class="detalles-icono-2">
+                            <img src="img/ico-2.svg" alt="">
+                            <div class="detalles-title">
+                                <p>Fiesta</p>
+                            </div>
+                            <div class="detalles-body">
+                                <p>Calle 4ta Cda. de Antígona s/n, Santa Rosa de Lima, 54740 Cuautitlán Izcalli, Méx.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="detalles-icono-3">
+                            <img src="img/ico-3.svg" alt="">
+                            <div class="detalles-title">
+                                <p>Vestimenta</p>
+                            </div>
+                            <div class="detalles-body">
+                                <p>Formal</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detalles-img">
+                        <img src="img/detalles-1.jpg" alt="">
+                    </div>
+                    <div class="detalles-button">
+                        <a href="https://maps.app.goo.gl/JMSMuzo8Wv8M2fudA">
+                            <div id="button-salon">
+                                <p>IR A MAPS</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="itinerario">
+            <div class="itinerario-container">
+                <div class="itinerario-header">
+                    <div>
+                        <p id="itinerario-header-1">ITINERARIO</p>
+                    </div>
+                </div>
+                <div class="timeline">
+                    <ul>
+                        <li>
+                            <div class="content">
+                                <i class="fa-solid fa-menorah"></i>
+                                <h2>Recepción</h2>
+                                <p> <span>17:30</span></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content">
+                                <i class="fa-solid fa-utensils"></i>
+                                <h2>Cena</h2>
+                                <p> <span>19:00</span></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content">
+                                <i class="fa-solid fa-shoe-prints fa-rotate-270"></i>
+                                <h2>Vals</h2>
+                                <p> <span>20:00</span></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content">
+                                <i class="fa-solid fa-cake-candles"></i>
+                                <h2>Pastel</h2>
+                                <p> <span>20:30</span></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content">
+                                <i class="fa-solid fa-champagne-glasses"></i>
+                                <h2>Brindis</h2>
+                                <p> <span>20:40</span></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content">
+                                <i class="fa-solid fa-gifts"></i>
+                                <h2>Fiesta</h2>
+                                <p> <span>20:45</span></p>
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="content">
+                                <i class="fa-solid fa-heart"></i>
+                                <h2>Fin</h2>
+                                <p> <span>00:30</span></p>
+                            </div>
+                        </li>
+                        <div style="clear: both"></div>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+        <section id="regalos">
+            <div class="regalos-container">
+                <div class="vineta-sup">
+                    <img src="img/vineta-1.svg" alt="">
+                </div>
+                <div class="regalos-header">
+                    <div>
+                        <p>OPCIONES DE REGALO</p>
+                    </div>
+                </div>
+                <div class="regalos-regalos">
+                    <div class="regalos-iconos">
+                        <!-- <div class="regalos-icono">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div class="detalles-title">
+                                <p>¡Lluvia de Sobres!</p>
+                            </div>
+                            <div class="detalles-body">
+                                <p>Es la tradición de regalar dinero en efectivo</p>
+                            </div>
+                        </div> -->
+                        <div class="regalos-icono">
+                            <i class="fa-solid fa-gift"></i>
+                            <div class="detalles-title">
+                                <p>¡Regalo Sorpresa!</p>
+                            </div>
+                            <div class="detalles-body">
+                                <p>Estoy segura que me encantará.</p>
+                            </div>
+                        </div>
+                        <div class="regalos-icono">
+                            <img src="img/regalos-1.svg" alt="">
+                            <div class="detalles-title">
+                                <p>Mesa de regalos</p>
+                            </div>
+                            <div class="detalles-body">
+                                <p>Evento 51399885</p>
+                            </div>
+                            <div class="detalles-button">
+                                <a href="https://mesaderegalos.liverpool.com.mx/eventodebusqueda">
+                                    <div id="button-salon">
+                                        <p>IR A MESA</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- <div class="regalos-icono">
+                            <i class="fa-solid fa-credit-card"></i>
+                            <div class="detalles-title">
+                                <p>Transferencia</p>
+                            </div>
+                            <div class="detalles-body">
+                                <p>Silvia Alvarado Vazquez</p>
+                                <P>CLABE</P>
+                                <p>XXXXXXXXXX</p>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="vineta-inf">
+                    <img src="img/vineta-1.svg" alt="">
+                </div>
+            </div>
+        </section>
+        <section id="hashtag">
+            <div class="hashtag"></div>
+            <div class="hashtag-container">
+                <div class="hashtag-ico">
+                    <i class="fa-solid fa-camera-retro"></i>
+                </div>
+                <div class="hashtag-title">
+                    <p>¡TOMA MUCHAS FOTOS!</p>
+                </div>
+                <div class="hashtag-body">
+                    <p>Y no olvides usar el hashtag</p>
+                </div>
+                <div class="hashtag-carrusel">
+                    <div class="inner">
+                        <div class="tag">
+                            <span>#XVdeVale</span>
+                        </div>
+                        <div class="tag">
+                            <span>#XVdeVale</span>
+                        </div>
+                        <div class="tag">
+                            <span>#XVdeVale</span>
+                        </div>
+                        <div class="tag">
+                            <span>#XVdeVale</span>
+                        </div>
+                        <div class="tag">
+                            <span>#XVdeVale</span>
+                        </div>
+                        <div class="tag">
+                            <span>#XVdeVale</span>
+                        </div>
+                        <div class="tag">
+                            <span>#XVdeVale</span>
+                        </div>
+                        <div class="tag">
+                            <span>#XVdeVale</span>
+                        </div>
+                        <div class="tag">
+                            <span>#XVdeVale</span>
+                        </div>
+                        <div class="tag">
+                            <span>#XVdeVale</span>
+                        </div>
+                        <div class="tag">
+                            <span>#XVdeVale</span>
+                        </div>
+                        <div class="tag">
+                            <span>#XVdeVale</span>
+                        </div>
+                        <div class="tag">
+                            <span>#XVdeVale</span>
+                        </div>
+                        <div class="tag">
+                            <span>#XVdeVale</span>
+                        </div>
+                    </div>
+                    <div class="fade"></div>
+                </div>
+            </div>
+        </section>
+        <section id="galeria">
+            <div class="galeria-container">
+                <div class="vineta-sup">
+                    <img src="img/vineta-1.svg" alt="">
+                </div>
+                <div class="itinerario-header">
+                    <div>
+                        <p id="itinerario-header-1">GALERÍA</p>
+                    </div>
+                </div>
+                <div class="vineta-div">
+                    <img src="img/vineta-2.svg" alt="">
+                </div>
+                <div class="galeria-box">
+                    <div class="galeria-box-container">
+                        <!-- <a href="img/galeria-1.jpg" data-lightbox="models" data-title="imagen 1"><img src="img/galeria-1.jpg" alt=""></a>
+                        <a href="img/galeria-2.jpg" data-lightbox="models"><img src="img/galeria-2.jpg" alt=""></a>
+                        <a href="img/galeria-3.jpg" data-lightbox="models"><img src="img/galeria-3.jpg" alt=""></a>
+                        <a href="img/galeria-4.jpg" data-lightbox="models"><img src="img/galeria-4.jpg" alt=""></a>
+                        <a href="img/galeria-5.jpg" data-lightbox="models"><img src="img/galeria-5.jpg" alt=""></a>
+                        <a href="img/galeria-6.jpg" data-lightbox="models"><img src="img/galeria-6.jpg" alt=""></a>
+                        <a href="img/galeria-7.jpg" data-lightbox="models"><img src="img/galeria-7.jpg" alt=""></a>
+                        <a href="img/galeria-8.jpg" data-lightbox="models"><img src="img/galeria-8.jpg" alt=""></a>
+                        <a href="img/galeria-9.jpg" data-lightbox="models"><img src="img/galeria-9.jpg" alt=""></a>
+                        <a href="img/galeria-10.jpg" data-lightbox="models"><img src="img/galeria-10.jpg" alt=""></a> -->
+                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalImage1"><img src="img/galeria-1.jpg" alt=""></a>
+                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalImage2"><img src="img/galeria-2.jpg" alt=""></a>
+                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalImage3"><img src="img/galeria-3.jpg" alt=""></a>
+                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalImage4"><img src="img/galeria-4.jpg" alt=""></a>
+                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalImage5"><img src="img/galeria-5.jpg" alt=""></a>
+                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalImage6"><img src="img/galeria-6.jpg" alt=""></a>
+                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalImage7"><img src="img/galeria-7.jpg" alt=""></a>
+                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalImage8"><img src="img/galeria-8.jpg" alt=""></a>
+                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalImage9"><img src="img/galeria-9.jpg" alt=""></a>
+                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalImage10"><img src="img/galeria-10.jpg" alt=""></a>
+                        <a href="#!" data-bs-toggle="modal" data-bs-target="#modalImage11"><img src="img/galeria-11.jpg" alt=""></a>
+                    </div>
+                </div>
+                <div class="vineta-inf">
+                    <img src="img/vineta-1.svg" alt="">
+                </div>
+            </div>
+        </section>
+        <section id="asistencia">
+            <div class="asistencia-container">
+                <div class="asistencia-header">
+                    <p>Asistencia</p>
+                </div>
+                <div class="asistencia-body">
+                    <p>¡Queremos compartir este momento contigo!
+                        Por favor ayúdanos confirmando tu asistencia.</p>
+                </div>
+                <div class="asistencia-form">
+                    <!-- correo de test -->
+                    <!-- <form  action="https://formsubmit.co/e8598c09869284301c7bdf2b0ac5b80f" method="POST"> -->
+                    <!-- correo oficial -->
+                    <form  action="https://formsubmit.co/9b7614e2f237df680f8c699bc429d89f" method="POST">
+                        <div class="asistencia-nombre">
+                            <label for="">Nombre</label>
+                            <input type="text" id="nombre" name="Nombre" placeholder="Coloca tu nombre..." required>
+                        </div>
+                        <div class="asistencia-respuesta">
+                            <label for="">Respuesta</label>
+                            <div class="respuesta">
+                                <div class="respuesta-no">
+                                    <input type="radio" name="Respuesta" id="no" value="Lo siento, no podre asistir.">
+                                    <label for="no">Lo siento, no podre asistir.</label>
+                                </div>
+                                <div class="respuesta-si">
+                                    <input type="radio" name="Respuesta" id="si" value="¡Claro, ahí estaré!">
+                                    <label for="si">¡Claro, ahí estaré!</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="asistencia-acompaniantes">
+                            <label for="">Acompañante(s)</label>
+                            <textarea name="Acompañantes" id="acompañante" cols="30" rows="10" placeholder="Nombres de tus acompañantes"></textarea>
+                        </div>
+                        <div class="asistencia-deseo">
+                            <label for="">Deseo</label>
+                            <textarea name="Deseo" id="deseo" cols="30" rows="10" placeholder="Deseale algo a la cumpleañera" required></textarea>
+                        </div>
+                        <div class="asistencia-email">
+                            <label for="">Correo eletrónico</label>
+                            <input type="email" id="email" name="email" placeholder="Coloca tu correo..." required>
+                        </div>
+                        <div class="asistencia-boton">
+                            <button type="submit">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <section id="copyright">
+            <div class="copyright-container">
+                <div class="agradecimiento-header">
+                    <p>¡Gracias por ser parte de uno de los mejores días de mi vida!</p>
+                </div>
+                <div class="agradecimiento-body">
+                    <p>Con cariño:</p>
+                </div>
+                <div class="agradecimiento-name">
+                    <p>Daria Valentina</p>
+                </div>
+                <div class="copyright-header">
+                    <p>©<span id="anio"></span> DARIA VALNETINA BY JUAN CARLOS HORTA ALVARADO ALL RIGHTS RESERVED</p>
+                </div>
+                <div class="copyright-body">
+                    <p>¿TIENES UN EVENTO EN PUERTA?</p>
+                    <p>DISEÑA CON NOSOTROS TU INVITACIÓN WEB DIGITAL</p>
+                </div>
+                <div class="copyright-contacto">
+                    <p>DANDO CLICK <a href="https://api.whatsapp.com/send/?phone=5576869262&text&type=phone_number&app_absent=0">AQUÍ</a></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal de galeria inicio -->
+    <div tabindex="-1" aria-labelledby="modalImage1" aria-hidden="true" class="modal fade" id="modalImage1">
+        <div class="modal-dialog modal-lg modal-dialog-center">
+            <div class="modal-content">
+                <img src="img/galeria-1.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <div tabindex="-1" aria-labelledby="modalImage2" aria-hidden="true" class="modal fade" id="modalImage2">
+        <div class="modal-dialog modal-lg modal-dialog-center">
+            <div class="modal-content">
+                <img src="img/galeria-2.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <div tabindex="-1" aria-labelledby="modalImage3" aria-hidden="true" class="modal fade" id="modalImage3">
+        <div class="modal-dialog modal-lg modal-dialog-center">
+            <div class="modal-content">
+                <img src="img/galeria-3.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <div tabindex="-1" aria-labelledby="modalImage4" aria-hidden="true" class="modal fade" id="modalImage4">
+        <div class="modal-dialog modal-lg modal-dialog-center">
+            <div class="modal-content">
+                <img src="img/galeria-4.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <div tabindex="-1" aria-labelledby="modalImage5" aria-hidden="true" class="modal fade" id="modalImage5">
+        <div class="modal-dialog modal-lg modal-dialog-center">
+            <div class="modal-content">
+                <img src="img/galeria-5.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <div tabindex="-1" aria-labelledby="modalImage6" aria-hidden="true" class="modal fade" id="modalImage6">
+        <div class="modal-dialog modal-lg modal-dialog-center">
+            <div class="modal-content">
+                <img src="img/galeria-6.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <div tabindex="-1" aria-labelledby="modalImage7" aria-hidden="true" class="modal fade" id="modalImage7">
+        <div class="modal-dialog modal-lg modal-dialog-center">
+            <div class="modal-content">
+                <img src="img/galeria-7.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <div tabindex="-1" aria-labelledby="modalImage8" aria-hidden="true" class="modal fade" id="modalImage8">
+        <div class="modal-dialog modal-lg modal-dialog-center">
+            <div class="modal-content">
+                <img src="img/galeria-8.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <div tabindex="-1" aria-labelledby="modalImage9" aria-hidden="true" class="modal fade" id="modalImage9">
+        <div class="modal-dialog modal-lg modal-dialog-center">
+            <div class="modal-content">
+                <img src="img/galeria-9.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <div tabindex="-1" aria-labelledby="modalImage10" aria-hidden="true" class="modal fade" id="modalImage10">
+        <div class="modal-dialog modal-lg modal-dialog-center">
+            <div class="modal-content">
+                <img src="img/galeria-10.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <div tabindex="-1" aria-labelledby="modalImage11" aria-hidden="true" class="modal fade" id="modalImage11">
+        <div class="modal-dialog modal-lg modal-dialog-center">
+            <div class="modal-content">
+                <img src="img/galeria-11.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- Modal de galeria fin -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+</html>

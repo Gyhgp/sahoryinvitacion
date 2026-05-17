@@ -1,0 +1,1275 @@
+<!doctype html>
+<html lang="es">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis XV Años:.. Sofía</title>
+  <meta property="og:title" content="Mis 15 Años - Sofía">
+  <meta property="og:description" content="Estás invitado a celebrar conmigo este día tan especial">
+  <meta property="og:image" content="miniatura.png">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" sizes="32x32" href="miniatura.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="miniatura.png">
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&amp;family=Montserrat:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <style>
+/* ==========================
+   VARIABLES DE COLORES
+   Cambia aquí para actualizar estilos automáticamente
+========================== */
+:root {
+
+  /* Colores principales */
+  --primary-color: #161616;          /* Color principal/acento elegante */
+  --secondary-color: #e6d8ec;        /* Color secundario/acento suave */
+  --text-color: #242424;             /* Color de texto principal */
+  --text-light: #ffffff;             /* Color de texto claro (ej: hero) */
+  --text-dark-mode: #f5e8f5;         /* Texto general en modo oscuro */
+  --text-invitation-light: #000000;  /* Color de texto invitación modo claro */
+  --text-invitation-dark: #dadada;   /* Color de texto invitación modo oscuro */
+  --countdown-dark: #ffffff;         /* Color countdown modo oscuro */
+
+  /* Fondos generales */
+     --background-light: linear-gradient(135deg, #fff0f6 0%, #fde2f3 40%, #fbcfe8 100%),
+                      radial-gradient(circle at 20% 20%, rgba(255,255,255,0.6) 0%, transparent 40%),
+                      radial-gradient(circle at 80% 30%, rgba(255,255,255,0.4) 0%, transparent 40%),
+                      radial-gradient(circle at 50% 80%, rgba(255,255,255,0.3) 0%, transparent 40%);
+
+  /* 🌙 Fondo general oscuro (rosa profundo elegante, no negro) */
+  --background-dark: linear-gradient(135deg, #2a1120 0%, #3a1a2d 40%, #4a2238 100%),
+                     radial-gradient(circle at 20% 20%, rgba(255,182,193,0.15) 0%, transparent 40%),
+                     radial-gradient(circle at 80% 30%, rgba(255,192,203,0.12) 0%, transparent 40%),
+                     radial-gradient(circle at 50% 80%, rgba(255,182,193,0.1) 0%, transparent 40%);
+
+  /* Tarjetas */
+  /*  Tarjeta modo claro — rosado suave tipo cristal */
+  --card-light: rgba(255, 240, 246, 0.85);
+
+  /* 🌙 Tarjeta modo oscuro — rosa profundo elegante */
+  --card-dark: rgba(70, 30, 50, 0.85);
+
+  /* Sombras */
+  --shadow-light: 0 8px 32px rgba(255, 255, 255, 0.08); /* Sombra tarjeta clara */
+  --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.6);        /* Sombra tarjeta oscura */
+
+  /* Hero overlay */
+  --hero-overlay-gradient: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.65) 100%);
+
+  /* Botones elegantes */
+  --button-gradient: linear-gradient(135deg, #040424, #02021a);
+  --button-hover-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  --button-text: #ffffff;  /* 💗 Degradado principal del botón (rosa elegante) */
+  --button-gradient: linear-gradient(135deg, #f06292, #e75480);
+
+  /* ✨ Sombra al pasar el mouse (rosa profundo suave) */
+  --button-hover-shadow: 0 8px 22px rgba(231, 84, 128, 0.45);
+
+  /* 🤍 Color del texto */
+  --button-text: #ffffff;
+
+  /* Iconos y detalles */
+  --icon-color: var(--primary-color);
+  --icon-dark-color: #ffffff;
+  --gift-background: rgba(180, 180, 200, 0.08);
+
+  /* Formulario */
+  --input-background-light: rgba(255, 255, 255, 0.5);
+  --input-background-dark: rgba(50, 35, 50, 0.5);
+  --input-border-light: rgba(212, 165, 212, 0.3);
+  --input-border-dark: rgba(240, 192, 240, 0.3);
+
+}
+
+/* ==========================
+   RESET Y ESTILOS BASE
+========================== */
+body {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-color);
+  background: var(--background-light);
+  overflow-x: hidden;
+  transition: background 0.5s ease;
+}
+
+body.dark-mode {
+  background: var(--background-dark);
+  color: var(--text-dark-mode);
+}
+
+/* ==========================
+   PARTÍCULAS DECORATIVAS
+========================== */
+.sparkles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(200, 200, 220, 0.7), transparent);
+  border-radius: 50%;
+  animation: float 8s infinite ease-in-out;
+  opacity: 0.6;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-20px) translateX(10px); }
+  50% { transform: translateY(-40px) translateX(-10px); }
+  75% { transform: translateY(-20px) translateX(5px); }
+}
+
+/* ==========================
+   HERO SECTION
+========================== */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.75);
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--hero-overlay-gradient);
+}
+
+.hero-content {
+  position: relative;
+   
+  z-index: 10;
+  text-align: center;
+  color: var(--text-light);
+  padding: 2rem;
+  margin-top: 50vh;
+}
+
+.hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: 4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  letter-spacing: 2px;
+  animation: fadeInUp 1.5s ease;
+}
+
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 300;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  animation: fadeInUp 1.8s ease;
+}
+
+/* ==========================
+   TOGGLES
+========================== */
+.music-toggle {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.75rem 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.music-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  z-index: 1000;
+  background: rgb(255, 255, 255);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.486);
+  padding: 0.75rem 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  color: var(--text-light);
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.616);
+  transform: scale(1.05);
+}
+
+/* ==========================
+   MAIN CONTAINER
+========================== */
+.main-container {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.section {
+  padding: 4rem 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+  letter-spacing: 1px;
+}
+
+body.dark-mode .section-title {
+  color: #bdbdbd;
+}
+
+/* ==========================
+   TARJETAS ELEGANTES
+========================== */
+.elegant-card {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--card-light);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-light);
+  border: 1px solid rgba(121, 120, 121, 0.2);
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .elegant-card {
+  background: var(--card-dark);
+  border-color: rgba(200, 200, 220, 0.15);
+  box-shadow: var(--shadow-dark);
+}
+
+/* ==========================
+   INVITACIÓN
+========================== */
+.invitation-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  line-height: 1.8;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-invitation-light);
+}
+
+.section-frase .invitation-text{
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.6rem;
+  line-height: 2;
+  letter-spacing: 0.6px;
+}
+
+body.dark-mode .invitation-text {
+  color: var(--text-invitation-dark);
+}
+
+.event-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.1rem;
+}
+
+.detail-icon {
+  font-size: 1.5rem;
+  color: var(--icon-color);
+}
+
+body.dark-mode .detail-icon {
+  color: var(--icon-dark-color);
+}
+
+/* ==========================
+   COUNTDOWN
+========================== */
+.countdown-container {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.countdown-item {
+  text-align: center;
+}
+
+.countdown-number {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  font-weight: 550;
+  color: var(--primary-color);
+  display: block;
+}
+
+body.dark-mode .countdown-number {
+  color: var(--countdown-dark);
+}
+
+.countdown-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.25rem;
+  opacity: 0.8;
+}
+
+/* ==========================
+   GALERÍA
+========================== */
+
+.gallery-slider{
+  width:100%;
+  overflow:hidden;
+  position:relative;
+}
+
+.gallery-track{
+   display:flex;
+  gap:20px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+}
+
+.gallery-track::-webkit-scrollbar{
+   height:8px;
+}
+
+.gallery-item{
+  flex:0 0 100%;
+  scroll-snap-align:center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:10px;
+}
+
+.gallery-item img{
+  width:auto;
+  max-width:100%;
+  max-height:70vh;
+  height:auto;
+  object-fit:contain;
+  display:block;
+  border-radius:14px;
+}
+@media (min-width:768px){
+  .gallery-item{
+    flex:0 0 50%;
+  }
+}
+@media (min-width:1100px){
+  .gallery-item{
+    flex:0 0 33.33%;
+  }
+}
+.gallery-hint::after{
+  content:"→";
+  margin-left:6px;
+  animation:slideHint 1.2s infinite;
+}
+
+@keyframes slideHint{
+  0%{transform:translateX(0)}
+  50%{transform:translateX(6px)}
+  100%{transform:translateX(0)}
+}
+/* ==========================
+   MAPA
+========================== */
+.map-container {
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-light);
+}
+
+body.dark-mode .map-container {
+  box-shadow: var(--shadow-dark);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+}
+
+/* ==========================
+   BOTONES
+========================== */
+.elegant-button {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: var(--button-gradient);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  color: var(--button-text);
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.elegant-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--button-hover-shadow);
+}
+
+/* ==========================
+   SECCIÓN REGALO
+========================== */
+.gift-section {
+  text-align: center;
+}
+
+.gift-details {
+  display: none;
+  margin-top: 2rem;
+  animation: fadeIn 0.5s ease;
+}
+
+.gift-details.show {
+  display: block;
+}
+
+.gift-item {
+  background: var(--gift-background);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+body.dark-mode .gift-item {
+  background: var(--gift-background);
+}
+
+.gift-value {
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  flex: 1;
+  text-align: left;
+}
+
+.copy-button {
+  padding: 0.5rem 1rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.copy-button:hover {
+  background: #05093d;
+  transform: scale(1.05);
+}
+
+.copy-button.copied {
+  background: #4caf50;
+}
+
+/* ==========================
+   FORMULARIOS
+========================== */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #5a4555;
+}
+
+body.dark-mode .form-group label {
+  color: #e8d8e8;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.875rem;
+  border: 2px solid var(--input-border-light);
+  border-radius: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  background: var(--input-background-light);
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group select,
+body.dark-mode .form-group textarea {
+  background: var(--input-background-dark);
+  border-color: var(--input-border-dark);
+  color: #e8d8e8;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(212, 165, 212, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ==========================
+   ANIMACIONES
+========================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+@media (max-width: 768px) {
+
+  .hero-title {
+       font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size:1.5rem;
+  }
+
+  .section {
+    padding: 3rem 1.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .elegant-card {
+    padding: 2rem;
+  }
+
+  .countdown-container {
+    gap: 1rem;
+  }
+
+  .countdown-number {
+    font-size: 2rem;
+  }
+
+  .music-toggle,
+  .theme-toggle {
+    top: 1rem;
+    padding: 0.5rem 0.875rem;
+    font-size: 0.85rem;
+  }
+
+  .music-toggle {
+    right: 1rem;
+  }
+
+  .theme-toggle {
+    left: 1rem;
+  }
+
+ 
+}
+
+    
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Partículas decorativas -->
+  <div class="sparkles" id="sparkles"></div>
+  <!-- Controles superiores --> 
+  <button class="theme-toggle" id="themeToggle">🌙
+    </button> <button class="music-toggle" id="musicToggle"> <span id="musicIcon">🎵</span> <span id="musicText">Música</span> 
+      </button> <!-- Audio (CAMBIAR URL DE MÚSICA AQUÍ) -->
+  
+  
+  <audio id="backgroundMusic" loop><source src="musica.mp3" type="audio/mpeg">
+  </audio>
+  
+  <!-- Hero Section -->
+  <div class="hero-section">
+        <!-- CAMBIAR URL DE IMAGEN DE PORTADA AQUÍ --> 
+    <img src="portada.webp" alt="Portada" class="hero-image" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #d4a5d4, #f8e8f8)'; this.alt='Image unavailable';">
+   <div class="hero-overlay"></div>
+   <div class="hero-content">
+    <h1 class="hero-title" id="heroName"><br><br><br></h1>
+    <p class="hero-subtitle">Mis 15 Años</p>
+   </div>
+  </div><!-- Contenedor de secciones -->
+  <div class="main-container">
+    
+    <!-- Sección Invitación -->
+<section class="section section-frase" id="invitation-section-frase">
+  <h2 class="section-title"></h2>
+  <div class="elegant-card">
+    <p class="invitation-text" id="invitationText">
+      </p>
+  </div>
+</section>
+
+
+      <section  id="invitation-section">
+    <h2 class="section-title"></h2>
+    <div class="elegant-card">
+         <div class="detail-item"><span class="detail-icon">📅</span> <span id="eventDate"></span>
+      </div>
+      <div class="detail-item"><span class="detail-icon">🕘</span> <span id="eventTime"></span>
+      </div>
+   
+     </div>
+     <div class="countdown-container" id="countdown">
+      <div class="countdown-item"><span class="countdown-number" id="days">0</span>
+         <span class="countdown-label">Días</span>
+      </div>
+      <div class="countdown-item"><span class="countdown-number" id="hours">0</span> 
+        <span class="countdown-label">Horas</span>
+      </div>
+      <div class="countdown-item"><span class="countdown-number" id="minutes">0</span> 
+        <span class="countdown-label">Minutos</span>
+      </div>
+      <div class="countdown-item"><span class="countdown-number" id="seconds">0</span> 
+        <span class="countdown-label">Segundos</span>
+      </div>
+     </div>
+    </div>
+   </section>
+
+
+   <!-- Galería de Fotos -->
+   <section class="section" id="gallery-section">
+    <h2 class="section-title">MIS FOTOS</h2>
+    <div class="gallery-hint">
+Desliza las fotos →
+</div>
+    <div class="gallery-slider">
+  <div class="gallery-track" id="galleryGrid"></div>
+</div>
+   </section>
+   
+   <!-- Ubicación -->
+   <section class="section" id="location-section">
+    <h2 class="section-title">Lugar de Celebración</h2>
+      <div class="detail-item"><span class="detail-icon">📍</span> 
+        <span id="eventLocation"></span>
+      </div>
+    <div class="map-container">
+      <!-- CAMBIAR URL DEL MAPA AQUÍ -->
+      <iframe id="mapFrame"></iframe>
+    </div>
+    <div style="text-align: center;">
+      <!-- CAMBIAR URL DE GOOGLE MAPS AQUÍ -->
+       <a id="mapButton" target="_blank" rel="noopener noreferrer" class="elegant-button"> 📍 Cómo llegar con GPS </a>
+    </div>
+   </section>
+   
+   <!-- Código de Vestimenta -->
+   <section class="section" id="dresscode-section">
+    <h2 class="section-title">Código de Vestimenta</h2>
+    <div class="elegant-card" style="text-align: center;">
+     <div style="font-size: 3rem; margin-bottom: 1rem;">
+      👗
+     </div>
+     <p class="invitation-text" id="dressCodeText"></p>
+    </div>
+   </section>
+   
+   <!-- Regalo -->
+   <section class="section" id="gift-section">
+    <h2 class="section-title">Regalo</h2>
+    <div class="elegant-card gift-section">
+
+     <p class="invitation-text" id="frase-regalo">
+
+      Tu presencia es el mejor regalo, pero si deseas obsequiarme algo:
+      
+      </p>
+      
+      <button class="elegant-button" id="showGiftBtn">🎁 Ver alias</button>
+     <div class="gift-details" id="giftDetails">
+      <div class="gift-item">
+       <div>
+        <div style="font-weight: 500; margin-bottom: 0.25rem;" >
+         CBU
+        </div>
+        <div class="gift-value" id="cbuValue">
+      
+        </div>
+       </div><button class="copy-button" data-copy="cbu" >📋 Copiar</button>
+      </div>
+      <div class="gift-item">
+       <div>
+        <div style="font-weight: 500; margin-bottom: 0.25rem;">
+         Alias
+        </div>
+        <div class="gift-value" id="aliasValue">
+      
+        </div>
+       </div><button class="copy-button" data-copy="alias">📋 Copiar</button>
+      </div>
+     </div>
+    </div>
+   </section>
+   
+   <!-- Confirmación de Asistencia -->
+   <section class="section id="rsvp-section">
+    <h2 class="section-title">Confirmación de Asistencia</h2>
+    <div class="elegant-card">
+     <form id="rsvpForm">
+      <div class="form-group"><label for="rsvpName">Tu nombre</label>
+         <input type="text" id="rsvpName" required placeholder="Ingresa tu nombre">
+      </div>
+      <div class="form-group"><label for="rsvpAttending">¿Asistirás?</label> 
+        <select id="rsvpAttending" required> <option value="">Selecciona una opción</option> 
+          <option value="si">Sí, asistiré</option> 
+          <option value="no">No podré asistir</option> 
+        </select>
+      </div>
+      <div class="form-group"><label for="rsvpGuests">Cantidad de acompañantes</label>
+         <input type="number" id="rsvpGuests" min="0" max="10" value="0" placeholder="0">
+      </div>
+      <button type="submit" class="elegant-button" style="width: 100%;"> 💌 Confirmar</button>
+     </form>
+    </div>
+   </section>
+
+
+   <!-- Restricciones Alimentarias -->
+   <section class="section" id="dietary-section">
+    <h2 class="section-title">Restricciones Alimentarias</h2>
+    <div class="elegant-card">
+     <p class="invitation-text" style="font-size: 1rem; margin-bottom: 1.5rem;">
+      Si tienes alguna restricción alimentaria, por favor házmelo saber:</p>
+     <form id="dietaryForm">
+      <div class="form-group"><label for="dietaryName">Tu nombre</label> 
+        <input type="text" id="dietaryName" required placeholder="Ingresa tu nombre">
+      </div>
+      <div class="form-group"><label for="dietaryRestriction">Descripción de la restricción</label> 
+        <textarea id="dietaryRestriction" required placeholder="Ejemplo: Soy vegetariano, intolerante al gluten, etc."></textarea>
+      </div>
+      <button type="submit" class="elegant-button" style="width: 100%;"> 📝 Sí, tengo </button>
+     </form>
+    </div>
+   </section>
+
+   <!-- Sugerir Canción -->
+   <section class="section" id="song-section">
+    <h2 class="section-title">Sugerir Canción</h2>
+    <div class="elegant-card">
+     <p class="invitation-text" style="font-size: 1rem; margin-bottom: 1.5rem;">Estamos armando la playlist de la fiesta<br>¿Qué canción no puede faltar en la fiesta?</p>
+     <form id="songForm">
+      <div class="form-group"><label for="songName">Tu nombre</label> <input type="text" id="songName" required placeholder="Ingresa tu nombre">
+      </div>
+      <div class="form-group"><label for="songSuggestion">Canción sugerida</label> <input type="text" id="songSuggestion" required placeholder="Nombre de la canción y artista">
+      </div><button type="submit" class="elegant-button" style="width: 100%;"> 🎵 Enviar</button>
+     </form>
+    </div>
+   </section>
+
+
+<section class="section" id="photos-section">
+  <h2 class="section-title">Comparte tus fotos del evento</h2>
+  <div class="elegant-card">
+    <p class="invitation-text" style="font-size: 1rem; margin-bottom: 1.5rem;">
+      ¿Tomaste fotos o videos durante la fiesta? Envíalos para guardarlos como recuerdo de esta noche tan especial.
+    </p>
+
+    <form id="photoForm">
+      <div class="form-group">
+        <label for="guestName">Tu nombre</label>
+        <input type="text" id="guestName" required placeholder="Ingresa tu nombre">
+      </div>
+
+      <button type="submit" class="elegant-button" style="width: 100%;">
+        Enviar fotos
+      </button>
+    </form>
+  </div>
+</section>
+
+   <!-- Footer -->
+   <div style="padding: 3rem 2rem; text-align: center; opacity: 0.7; font-size: 0.9rem;">
+    <p>✨ Te espero para celebrar juntos ✨</p>
+   </div>
+  </div>
+  <script>
+    // ====================================
+    // CONFIGURACIÓN EDITABLE
+    // ====================================
+    
+    // CAMBIAR ESTOS VALORES:
+ const CONFIG = {
+  quinceanera_name: 'Sofia',
+
+  // ✨ FRASE PRINCIPAL
+  invitation_text: 'Pronto será mi día especial y quiero que seas parte de él.',
+
+  event_date: '26 de Diciembre del 2026',
+  event_time: '21:00hs a 05:00hs',
+  event_location: 'Salón de Eventos Jacc, Paseo De La Costa',
+
+  dress_code_text: 'Elegante Sport - Evitar color rosado',
+
+  // 🎁 REGALO
+  cbu: '00000031000000000000008',
+  alias: 'valentina.fiesta.',
+
+  // 🖼️ IMÁGENES
+  hero_image: 'ejemplo2.jpg',
+  gallery_images: [
+ 
+    '1.webp',
+    '2.webp',
+    '3.webp',
+    '4.webp',
+    '5.webp',
+    '6.webp'
+  ],
+
+  // 🗺️ MAPA
+maps_embed_url: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3101.6559628426985!2d-68.05456229006116!3d-38.97752307158904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x960a321f61255559%3A0x3904401b2f7192b8!2sJACC%20Salon%20de%20Eventos!5e0!3m2!1ses!2sar!4v1776093147089!5m2!1ses!2sar",
+
+maps_button_url: 'https://maps.app.goo.gl/EJSrVzAj5bYaiU5f9',
+
+  
+  // 🎵 MÚSICA
+  music_url: 'musica.mp3',
+
+  whatsapp_number: '542996314030',
+  countdown_date: '2026-12-26T21:00:00'
+};
+
+    const defaultConfig = { ...CONFIG };
+
+    // ====================================
+    // SISTEMA DE TEMAS (Claro/Oscuro)
+    // ====================================
+    
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    
+    // Detectar preferencia del sistema
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDark) {
+      body.classList.add('dark-mode');
+      themeToggle.textContent = '🌞';
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      themeToggle.textContent = body.classList.contains('dark-mode') ? '🌞' : '🌙';
+    });
+
+    // ====================================
+    // CONTROL DE MÚSICA
+    // ====================================
+    
+    const musicToggle = document.getElementById('musicToggle');
+    const music = document.getElementById('backgroundMusic');
+    const musicIcon = document.getElementById('musicIcon');
+    let isPlaying = false;
+    
+    musicToggle.addEventListener('click', () => {
+      if (isPlaying) {
+        music.pause();
+        musicIcon.textContent = '🎵';
+        musicToggle.style.opacity = '0.7';
+      } else {
+        music.play().catch(e => console.error('Error playing music:', e));
+        musicIcon.textContent = '⏸️';
+        musicToggle.style.opacity = '1';
+      }
+      isPlaying = !isPlaying;
+    });
+
+    // ====================================
+    // PARTÍCULAS DECORATIVAS
+    // ====================================
+    
+    const sparklesContainer = document.getElementById('sparkles');
+    for (let i = 0; i < 30; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = Math.random() * 100 + '%';
+      sparkle.style.top = Math.random() * 100 + '%';
+      sparkle.style.animationDelay = Math.random() * 8 + 's';
+      sparkle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+      sparklesContainer.appendChild(sparkle);
+    }
+
+    // ====================================
+    // ANIMACIÓN DE SCROLL
+    // ====================================
+    
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // ====================================
+    // CUENTA REGRESIVA
+    // ====================================
+    
+    function updateCountdown() {
+      const eventDate = new Date(CONFIG.countdown_date).getTime();
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+      
+      if (distance < 0) {
+        document.getElementById('days').textContent = '0';
+        document.getElementById('hours').textContent = '0';
+        document.getElementById('minutes').textContent = '0';
+        document.getElementById('seconds').textContent = '0';
+        return;
+      }
+      
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('minutes').textContent = minutes;
+      document.getElementById('seconds').textContent = seconds;
+    }
+    
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ====================================
+    // SECCIÓN DE REGALO
+    // ====================================
+    
+    const showGiftBtn = document.getElementById('showGiftBtn');
+    const giftDetails = document.getElementById('giftDetails');
+    
+    showGiftBtn.addEventListener('click', () => {
+      if (giftDetails.classList.contains('show')) {
+        giftDetails.classList.remove('show');
+        showGiftBtn.textContent = '🎁 Ver datos para regalo';
+      } else {
+        giftDetails.classList.add('show');
+        showGiftBtn.textContent = '🎁 Ocultar datos';
+      }
+    });
+    
+    // Botones de copiar
+    document.querySelectorAll('.copy-button').forEach(button => {
+      button.addEventListener('click', async () => {
+        const type = button.getAttribute('data-copy');
+        const textToCopy = type === 'cbu' 
+          ? document.getElementById('cbuValue').textContent 
+          : document.getElementById('aliasValue').textContent;
+        
+        try {
+          await navigator.clipboard.writeText(textToCopy);
+          const originalText = button.textContent;
+          button.textContent = '✓ Copiado';
+          button.classList.add('copied');
+          
+          setTimeout(() => {
+            button.textContent = originalText;
+            button.classList.remove('copied');
+          }, 2000);
+        } catch (err) {
+          console.error('Error al copiar:', err);
+        }
+      });
+    });
+
+    // ====================================
+    // FORMULARIO DE CONFIRMACIÓN
+    // ====================================
+    
+    document.getElementById('rsvpForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('rsvpName').value;
+      const attending = document.getElementById('rsvpAttending').value;
+      const guests = document.getElementById('rsvpGuests').value;
+      
+      const attendingText = attending === 'si' ? 'Sí, asistiré' : 'No podré asistir';
+      const message = `Hola! Soy ${name}.\n\n${attendingText}${attending === 'si' && guests > 0 ? `\nAcompañantes: ${guests}` : ''}`;
+      
+      const whatsappUrl = `https://wa.me/${CONFIG.whatsapp_number}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    });
+
+     // ====================================
+    // FORMULARIO DE FOTOS
+    // ====================================
+    document.getElementById('photoForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById('guestName').value.trim();
+
+  const message = `Hola! Soy ${name}.\n\nTe envío las fotos y videos que tomé durante el evento 📸🎉`;
+
+  const whatsappUrl = `https://wa.me/${CONFIG.whatsapp_number}?text=${encodeURIComponent(message)}`;
+  window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+});
+
+    // ====================================
+    // FORMULARIO DE RESTRICCIONES
+    // ====================================
+    
+    document.getElementById('dietaryForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('dietaryName').value;
+      const restriction = document.getElementById('dietaryRestriction').value;
+      
+      const message = `Hola! Soy ${name}.\n\nTengo la siguiente restricción alimentaria:\n${restriction}`;
+      
+      const whatsappUrl = `https://wa.me/${CONFIG.whatsapp_number}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    });
+
+    // ====================================
+    // FORMULARIO DE SUGERENCIA DE CANCIÓN
+    // ====================================
+    
+    document.getElementById('songForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('songName').value;
+      const song = document.getElementById('songSuggestion').value;
+      
+      const message = `Hola! Soy ${name}.\n\nSugerencia de canción para la fiesta:\n🎵 ${song}`;
+      
+      const whatsappUrl = `https://wa.me/${CONFIG.whatsapp_number}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    });
+
+    // ====================================
+    // INTEGRACIÓN CON ELEMENT SDK
+    // ====================================
+    
+ async function onConfigChange(config) {
+
+  // 🎉 Nombre de la quinceañera
+  document.getElementById('heroName').textContent =
+    config.quinceanera_name || defaultConfig.quinceanera_name;
+
+  // ✨ Frase principal
+  document.getElementById('invitationText').textContent =
+    config.invitation_text || defaultConfig.invitation_text;
+
+  // 📅 Fecha y hora
+  document.getElementById('eventDate').textContent =
+    config.event_date || defaultConfig.event_date;
+
+  document.getElementById('eventTime').textContent =
+    config.event_time || defaultConfig.event_time;
+
+  // 📍 Lugar
+  document.getElementById('eventLocation').textContent =
+    config.event_location || defaultConfig.event_location;
+
+  // 👗 Dress code
+  document.getElementById('dressCodeText').textContent =
+    config.dress_code_text || defaultConfig.dress_code_text;
+
+  // 🎁 Regalo
+  document.getElementById('cbuValue').textContent =
+    config.cbu || defaultConfig.cbu;
+
+  document.getElementById('aliasValue').textContent =
+    config.alias || defaultConfig.alias;
+
+  // 🖼️ Imagen de portada
+  const heroImg = document.getElementById('heroImage');
+  if (heroImg && config.hero_image) {
+    heroImg.src = config.hero_image;
+  }
+
+  // 🖼️ Galería dinámica
+  const galleryGrid = document.getElementById('galleryGrid');
+  if (galleryGrid && config.gallery_images) {
+    galleryGrid.innerHTML = '';
+
+    config.gallery_images.forEach(src => {
+      const div = document.createElement('div');
+      div.className = 'gallery-item';
+
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Foto galería';
+      img.loading = 'lazy';
+
+      div.appendChild(img);
+      galleryGrid.appendChild(div);
+    });
+  }
+
+  // 🗺️ Mapa
+  const mapFrame = document.getElementById('mapFrame');
+  if (mapFrame && config.maps_embed_url) {
+    mapFrame.src = config.maps_embed_url;
+  }
+
+  const mapButton = document.getElementById('mapButton');
+  if (mapButton && config.maps_button_url) {
+    mapButton.href = config.maps_button_url;
+  }
+
+  // 🎵 Música
+  const musicSource = document.getElementById('musicSource');
+  if (musicSource && config.music_url) {
+    musicSource.src = config.music_url;
+  }
+}
+
+// Cargar los datos apenas abre la invitación
+document.addEventListener("DOMContentLoaded", () => {
+  onConfigChange(CONFIG);
+});
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig: defaultConfig,
+        onConfigChange: onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['quinceanera_name', config.quinceanera_name || defaultConfig.quinceanera_name],
+          ['invitation_text', config.invitation_text || defaultConfig.invitation_text],
+          ['event_date', config.event_date || defaultConfig.event_date],
+          ['event_time', config.event_time || defaultConfig.event_time],
+          ['event_location', config.event_location || defaultConfig.event_location],
+          ['dress_code_text', config.dress_code_text || defaultConfig.dress_code_text]
+        ])
+      });
+    }
+// Galeria de fotos 
+    const track = document.querySelector(".gallery-track");
+
+document.querySelector(".next").onclick = () => {
+  track.scrollBy({ left: 300, behavior: "smooth" });
+};
+
+document.querySelector(".prev").onclick = () => {
+  track.scrollBy({ left: -300, behavior: "smooth" });
+};
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c58f74747a85040',t:'MTc2OTY5MjE4Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

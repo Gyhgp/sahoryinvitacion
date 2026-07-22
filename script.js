@@ -16,67 +16,99 @@ const slides = carouselTrack ? Array.from(carouselTrack.children) : [];
 const dotsContainer = document.getElementById("carouselDots");
 const prevSlide = document.getElementById("prevSlide");
 const nextSlide = document.getElementById("nextSlide");
+const passModal = document.getElementById("passModal");
+const showPassButton = document.getElementById("showPassButton");
+const closePassModal = document.getElementById("closePassModal");
+
+const AUTOPLAY_INTERVAL_MS = 4800;
+const COUNTDOWN_INTERVAL_MS = 1000;
+const DEFAULT_PETAL_COUNT = 18;
+const REVEAL_THRESHOLD = 0.16;
+
 let currentSlide = 0;
 
-function pad(value) {
-  return String(value).padStart(2, "0");
-}
+const padNumber = (value, length = 2) => String(value).padStart(length, "0");
+
+const countdownValues = (milliseconds) => {
+  const days = Math.floor(milliseconds / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((milliseconds / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((milliseconds / (1000 * 60)) % 60);
+  const seconds = Math.floor((milliseconds / 1000) % 60);
+
+  return { days, hours, minutes, seconds };
+};
+
+const updateCountdownText = ({ days, hours, minutes, seconds }) => {
+  countdownEls.days.textContent = padNumber(days, 3);
+  countdownEls.hours.textContent = padNumber(hours);
+  countdownEls.minutes.textContent = padNumber(minutes);
+  countdownEls.seconds.textContent = padNumber(seconds);
+};
+
+const setCountdownExpired = () => {
+  countdownEls.days.textContent = "000";
+  countdownEls.hours.textContent = "00";
+  countdownEls.minutes.textContent = "00";
+  countdownEls.seconds.textContent = "00";
+};
 
 function updateCountdown() {
-  const now = Date.now();
-  const difference = eventDate - now;
+  const remainingTime = eventDate - Date.now();
 
-  if (difference <= 0) {
-    countdownEls.days.textContent = "000";
-    countdownEls.hours.textContent = "00";
-    countdownEls.minutes.textContent = "00";
-    countdownEls.seconds.textContent = "00";
+  if (remainingTime <= 0) {
+    setCountdownExpired();
     return;
   }
 
-  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((difference / (1000 * 60)) % 60);
-  const seconds = Math.floor((difference / 1000) % 60);
-
-  countdownEls.days.textContent = String(days).padStart(3, "0");
-  countdownEls.hours.textContent = pad(hours);
-  countdownEls.minutes.textContent = pad(minutes);
-  countdownEls.seconds.textContent = pad(seconds);
+  updateCountdownText(countdownValues(remainingTime));
 }
 
-function createPetals(total = 18) {
-  if (!petalContainer) {
-    return;
-  }
-
-  const fragment = document.createDocumentFragment();
+function createPetal() {
   const colors = [
     "rgba(242, 201, 76, 0.75)",
     "rgba(182, 58, 70, 0.65)",
     "rgba(15, 15, 16, 0.35)",
   ];
 
-  for (let index = 0; index < total; index += 1) {
-    const petal = document.createElement("span");
-    petal.className = "petal";
-    petal.style.left = `${Math.random() * 100}%`;
-    petal.style.animationDuration = `${12 + Math.random() * 12}s`;
-    petal.style.animationDelay = `${Math.random() * -15}s`;
-    petal.style.setProperty("--drift", `${-60 + Math.random() * 120}px`);
-    petal.style.opacity = `${0.18 + Math.random() * 0.5}`;
+  const petal = document.createElement("span");
+  petal.className = "petal";
+  petal.style.left = `${Math.random() * 100}%`;
+  petal.style.animationDuration = `${12 + Math.random() * 12}s`;
+  petal.style.animationDelay = `${Math.random() * -15}s`;
+  petal.style.setProperty("--drift", `${-60 + Math.random() * 120}px`);
+  petal.style.opacity = `${0.18 + Math.random() * 0.5}`;
 
-    const size = 6 + Math.random() * 14;
-    petal.style.width = `${size}px`;
-    petal.style.height = `${size}px`;
-    petal.style.background = colors[Math.floor(Math.random() * colors.length)];
+  const size = 6 + Math.random() * 14;
+  petal.style.width = `${size}px`;
+  petal.style.height = `${size}px`;
+  petal.style.background = colors[Math.floor(Math.random() * colors.length)];
+  petal.style.transform = `scale(${0.75 + Math.random() * 0.8})`;
 
-    const scale = 0.75 + Math.random() * 0.8;
-    petal.style.transform = `scale(${scale})`;
-    fragment.appendChild(petal);
+  return petal;
+}
+
+function createPetals(total = DEFAULT_PETAL_COUNT) {
+  if (!petalContainer) {
+    return;
+  }
+
+  const fragment = document.createDocumentFragment();
+
+  for (let i = 0; i < total; i += 1) {
+    fragment.appendChild(createPetal());
   }
 
   petalContainer.appendChild(fragment);
+}
+
+function updateFrameRatio(photo, frame) {
+  if (!(photo instanceof HTMLImageElement) || !(frame instanceof HTMLElement)) {
+    return;
+  }
+
+  if (photo.naturalWidth > 0 && photo.naturalHeight > 0) {
+    frame.style.setProperty("--frame-ratio", `${photo.naturalWidth} / ${photo.naturalHeight}`);
+  }
 }
 
 function setSlide(index) {
@@ -94,14 +126,7 @@ function setSlide(index) {
   const activePhoto = activeSlide?.querySelector(".gallery-photo");
   const activeFrame = activeSlide?.querySelector(".gallery-frame");
 
-  if (activePhoto instanceof HTMLImageElement && activeFrame instanceof HTMLElement) {
-    if (activePhoto.naturalWidth > 0 && activePhoto.naturalHeight > 0) {
-      activeFrame.style.setProperty(
-        "--frame-ratio",
-        `${activePhoto.naturalWidth} / ${activePhoto.naturalHeight}`
-      );
-    }
-  }
+  updateFrameRatio(activePhoto, activeFrame);
 
   if (!dotsContainer) {
     return;
@@ -138,23 +163,22 @@ function initGalleryPhotos() {
       return;
     }
 
-    const updateRatio = () => {
-      if (photo.naturalWidth > 0 && photo.naturalHeight > 0) {
-        frame.style.setProperty("--frame-ratio", `${photo.naturalWidth} / ${photo.naturalHeight}`);
-      }
-    };
-
     const markLoaded = () => {
       frame.classList.add("loaded");
-      updateRatio();
+      updateFrameRatio(photo, frame);
     };
+
     const markMissing = () => frame.classList.remove("loaded");
 
     photo.addEventListener("load", markLoaded);
     photo.addEventListener("error", markMissing);
 
-    if (photo.complete && photo.naturalWidth > 0) {
-      markLoaded();
+    if (photo.complete) {
+      if (photo.naturalWidth > 0) {
+        markLoaded();
+      } else {
+        markMissing();
+      }
     }
   });
 }
@@ -166,10 +190,41 @@ function startCarouselAutoplay() {
 
   window.setInterval(() => {
     setSlide(currentSlide + 1);
-  }, 4800);
+  }, AUTOPLAY_INTERVAL_MS);
+}
+
+function togglePassModal(open) {
+  if (!passModal) {
+    return;
+  }
+
+  passModal.classList.toggle("active", open);
+  passModal.setAttribute("aria-hidden", String(!open));
+  document.body.style.overflow = open ? "hidden" : "";
+}
+
+function addPassModalEvents() {
+  showPassButton?.addEventListener("click", () => togglePassModal(true));
+  closePassModal?.addEventListener("click", () => togglePassModal(false));
+
+  passModal?.addEventListener("click", (event) => {
+    if (event.target === passModal) {
+      togglePassModal(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && passModal?.classList.contains("active")) {
+      togglePassModal(false);
+    }
+  });
 }
 
 function revealOnScroll() {
+  if (!revealElements.length) {
+    return;
+  }
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -179,31 +234,93 @@ function revealOnScroll() {
         }
       });
     },
-    { threshold: 0.16 }
+    { threshold: REVEAL_THRESHOLD }
   );
 
   revealElements.forEach((element) => observer.observe(element));
 }
 
-enterInvitation?.addEventListener("click", () => {
+function playBackgroundMusic() {
+  if (!(bgMusic instanceof HTMLMediaElement)) {
+    return;
+  }
+
+  bgMusic.volume = 0.35;
+  bgMusic.currentTime = 0;
+  bgMusic.play().catch(() => {});
+}
+
+function openInvitation() {
   document.body.classList.add("invitation-open");
   document.body.classList.remove("no-scroll");
+  playBackgroundMusic();
+}
 
-  if (bgMusic instanceof HTMLAudioElement) {
-    bgMusic.volume = 0.35;
-    bgMusic.currentTime = 0;
-    bgMusic.play().catch(() => {});
+const SWIPE_THRESHOLD_PX = 45;
+let swipeStartX = null;
+let isSwiping = false;
+
+function handleCarouselPointerDown(event) {
+  if (!carouselTrack || event.pointerType === "mouse" && event.button !== 0) {
+    return;
   }
-});
 
-prevSlide?.addEventListener("click", () => setSlide(currentSlide - 1));
-nextSlide?.addEventListener("click", () => setSlide(currentSlide + 1));
+  swipeStartX = event.clientX;
+  isSwiping = true;
+  carouselTrack.setPointerCapture(event.pointerId);
+}
 
-document.body.classList.add("no-scroll");
-createPetals();
-createDots();
-initGalleryPhotos();
-revealOnScroll();
-updateCountdown();
-startCarouselAutoplay();
-window.setInterval(updateCountdown, 1000);
+function handleCarouselPointerMove(event) {
+  if (!isSwiping || swipeStartX === null) {
+    return;
+  }
+
+  const distance = event.clientX - swipeStartX;
+  if (Math.abs(distance) > SWIPE_THRESHOLD_PX) {
+    if (distance > 0) {
+      setSlide(currentSlide - 1);
+    } else {
+      setSlide(currentSlide + 1);
+    }
+    isSwiping = false;
+    swipeStartX = null;
+  }
+}
+
+function handleCarouselPointerUp() {
+  isSwiping = false;
+  swipeStartX = null;
+}
+
+function addCarouselSwipe() {
+  if (!carouselTrack || !slides.length) {
+    return;
+  }
+
+  carouselTrack.addEventListener("pointerdown", handleCarouselPointerDown, { passive: true });
+  carouselTrack.addEventListener("pointermove", handleCarouselPointerMove, { passive: true });
+  carouselTrack.addEventListener("pointerup", handleCarouselPointerUp);
+  carouselTrack.addEventListener("pointercancel", handleCarouselPointerUp);
+}
+
+function initCarouselControls() {
+  prevSlide?.addEventListener("click", () => setSlide(currentSlide - 1));
+  nextSlide?.addEventListener("click", () => setSlide(currentSlide + 1));
+}
+
+function init() {
+  document.body.classList.add("no-scroll");
+  enterInvitation?.addEventListener("click", openInvitation);
+  initCarouselControls();
+  addCarouselSwipe();
+  addPassModalEvents();
+  createPetals();
+  createDots();
+  initGalleryPhotos();
+  revealOnScroll();
+  updateCountdown();
+  startCarouselAutoplay();
+  window.setInterval(updateCountdown, COUNTDOWN_INTERVAL_MS);
+}
+
+document.addEventListener("DOMContentLoaded", init);
